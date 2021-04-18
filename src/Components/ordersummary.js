@@ -7,19 +7,19 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: "full",
-  },
-  media: {
-    height: 300,
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     maxWidth: "full",
+//   },
+//   media: {
+//     height: 300,
+//   },
+// });
 const gridStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -42,7 +42,7 @@ const cardStyles = makeStyles({
 
 
   const Order=()=>{
-    const classes = useStyles();
+    // const classes = useStyles();
     const grid=gridStyles();
     const card=cardStyles();
     const {buy,adress} =useContext(ProductContext);
