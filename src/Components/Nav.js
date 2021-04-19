@@ -50,6 +50,14 @@ export default function ButtonAppBar() {
   const handleLogout=()=>{
     sessionStorage.clear();
   }
+
+  var val;
+  if(cart.length===0){
+    val=0
+  }else{
+    val=cart.length
+  }
+
   
 
   return (
@@ -67,7 +75,7 @@ export default function ButtonAppBar() {
           <IconButton  className={classes.menuButton} color="inherit" aria-label="menu">
           
       <Button color="inherit" href="/cart">cart</Button>
-      <StyledBadge badgeContent={cart.length} color="secondary">
+      <StyledBadge badgeContent={val} color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
           </IconButton>
