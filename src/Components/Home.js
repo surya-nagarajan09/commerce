@@ -12,17 +12,17 @@ const MyCollection = [
 {
 	label: "First Picture",
 	imgPath:
-"https://i.postimg.cc/3JWFBhFt/hgjg.jpg",
+"https://i02.appmifile.com/413_operator_in/13/04/2021/f08968b1e8e54da057166baac02b00a7.jpg",
 },
 {
 	label: "Second Picture",
 	imgPath:
-"",
+"https://oasis.opstatics.com/content/dam/oasis/page/homepage/in/kv-banner/9R-GC-L.jpg",
 },
 {
 	label: "Third Picture",
 	imgPath:
-"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2020/May/Hero/Fuji_TallHero_Home_v2_en_US_1x._CB429090084_.jpg",
+"https://i02.appmifile.com/711_operator_in/18/04/2021/c4c62cee146013ff650b3e7bac305b26.jpg",
 },
 ];
 

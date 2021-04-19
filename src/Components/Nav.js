@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useContext} from "react";
+import {ProductContext} from "../Context";
 
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -44,8 +45,13 @@ const gridStyles= makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
 
+  const {disable}=useContext(ProductContext)
+
   const grid=gridStyles();
   const classes = useStyles();
+
+
+ 
   const handleLogout=()=>{
     sessionStorage.clear();
   }
@@ -70,7 +76,7 @@ export default function ButtonAppBar() {
       </StyledBadge>
           </IconButton>
           <Button color="inherit" href="/login">login/signup</Button>
-          <Button color="inherit" href="/" onClick={()=>handleLogout()}>Logout</Button>
+          <Button color="inherit" disabled={disable===true} href="/" onClick={()=>handleLogout()}>Logout</Button>
           
         </Toolbar>
       </AppBar>

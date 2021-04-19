@@ -15,7 +15,8 @@ const ContextProvider=({children})=>{
     const[adress,setAdress]=useState({fullName:"",Pincode:"",flat:"",area:"",landmar:"",city:"",state:"",gender:"",time:""});
     const[sort,setSort]=useState('');
     const[signUpMessage,setSignUpMessage]=useState("");
-    const[loginMessage,setLoginMessage]=useState("")
+    const[loginMessage,setLoginMessage]=useState("");
+    const[disable,setDisabled]=useState(true)
 
     const reset=()=>{
       setSort("");
@@ -48,6 +49,7 @@ const ContextProvider=({children})=>{
            sessionStorage.setItem("user",JSON.stringify(logindata))
     
            setLoginMessage("login in successfull !!!")
+           setDisabled(false)
           }
          
        },(err)=>{
@@ -119,7 +121,7 @@ const ContextProvider=({children})=>{
       },[])
     
  return (
-      <ProductContext.Provider value={{post,setPost,cart,setCart,productLoading,setProductLoading,login,setLogin,signUp,setSignUp,loginHandle,handleSignUp,buy,setBuy,addtoBuy,adress,setAdress,changeasc,changedsc,reset,signUpMessage,loginMessage}}>{children}
+      <ProductContext.Provider value={{post,setPost,cart,setCart,productLoading,setProductLoading,login,setLogin,signUp,setSignUp,loginHandle,handleSignUp,buy,setBuy,addtoBuy,adress,setAdress,changeasc,changedsc,reset,signUpMessage,loginMessage,disable}}>{children}
       </ProductContext.Provider>
   )
 }
