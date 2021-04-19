@@ -13,6 +13,16 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import TextField from '@material-ui/core/TextField';
 import ShopRoundedIcon from '@material-ui/icons/ShopRounded';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+
+
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 /** card style */
 const cardStyles = makeStyles({
   root: {
@@ -46,15 +56,38 @@ const Product=({children})=>{
     const grid=gridStyle();
     const{post,setCart,cart,productLoading,addtoBuy,buy,changeasc,changedsc,reset}=useContext(ProductContext);
     const[search,setSearch]=useState("");
+   
     
     /**  */
 
     window.localStorage.setItem('buyproduct', JSON.stringify(buy));
+
+    // snack Bar
+
+    const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  }; 
+    
+
     
    
   // add to cart
     const addToCart=(item)=>{
-        setCart([...cart,item])
+
+
+      
+      
+      setCart([...cart,item])
     
     }
   //storing cart values in local storage
@@ -106,8 +139,18 @@ if(productLoading){
                                     <Typography gutterBottom variant="h6" component="h6">Price: {item.price} </Typography>
                                     </CardContent>  
                                 </CardActionArea>
-                             <CardActions>
-                                <Button size="small" color="primary" onClick={()=>addToCart(item)}> add to cart <ShoppingCartIcon ></ShoppingCartIcon></Button>
+                             <CardActions> 
+                               <Button onClick={handleClick}>
+                                
+                                <Button size="small" color="primary" onClick={()=>addToCart(item) }> add to cart <ShoppingCartIcon ></ShoppingCartIcon>
+                               
+                                <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                                        <Alert onClose={handleClose} severity="success">
+                                    added to cart
+                                     </Alert>
+                                     </Snackbar>
+                                </Button>
+                                </Button>
                                 <a href="/Buy"><Button size="small" color="primary"  onClick={()=>addtoBuy(item)}> Buy now<ShopRoundedIcon></ShopRoundedIcon></Button></a> 
                              </CardActions>
                              </Card>
@@ -115,6 +158,7 @@ if(productLoading){
                          )}
                       </div>
               </Grid>
+              
       </Grid>
     </div>
       </div>

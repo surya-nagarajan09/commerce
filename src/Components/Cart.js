@@ -47,6 +47,8 @@ const cardStyles = makeStyles({
     const card=cardStyles();
     const {cart,setCart,buy,addtoBuy} =useContext(ProductContext);
 
+    window.localStorage.setItem("cartlength",(cart.length))
+
        const Remove = (item)=> {
          const userSelect= prompt("Enter yes/no")
             if(userSelect==="yes"){

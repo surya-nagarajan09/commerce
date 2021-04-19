@@ -1,5 +1,5 @@
-import React,{useContext} from "react";
- import {ProductContext} from "../Context";
+import React from "react";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
@@ -43,22 +43,12 @@ const gridStyles= makeStyles((theme) => ({
  
 
 export default function ButtonAppBar() {
-  const {cart}=useContext(ProductContext)
+
   const grid=gridStyles();
   const classes = useStyles();
-
   const handleLogout=()=>{
     sessionStorage.clear();
   }
-
-  var val;
-  if(cart.length===0){
-    val=0
-  }else{
-    val=cart.length
-  }
-
-  
 
   return (
     <div className={grid.root}>
@@ -75,7 +65,7 @@ export default function ButtonAppBar() {
           <IconButton  className={classes.menuButton} color="inherit" aria-label="menu">
           
       <Button color="inherit" href="/cart">cart</Button>
-      <StyledBadge badgeContent={val} color="secondary">
+      <StyledBadge color="secondary">
         <ShoppingCartIcon />
       </StyledBadge>
           </IconButton>
