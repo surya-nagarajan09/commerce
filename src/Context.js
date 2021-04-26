@@ -67,7 +67,7 @@ const ContextProvider=({children})=>{
       e.preventDefault();
       const{email,firstName,lastName,password}=signUp;
       setSignUpMessage(<CircularProgress color="secondary" />);
-      if((email!=="")&&(password!=="")&&(firstName!=="")&&(lastName!=="")){
+      if((email!=="")&&(password!=="")&&(firstName!=="")&&(lastName!=="")&&(password.length>=7)){
        axios.post(urlsign,{
         email:email,
         firstName:firstName,
@@ -83,7 +83,7 @@ const ContextProvider=({children})=>{
         }
       })
     }else{
-      setSignUpMessage(`please fill all fileds `)
+      setSignUpMessage(`please fill all fileds  and password length gretaer than 8`)
     }
 
       }

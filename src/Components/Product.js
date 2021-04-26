@@ -64,7 +64,7 @@ const Product=({children})=>{
 
     // snack Bar
 
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] =useState(false);
 
   const handleClick = () => {
     setOpen(true);
@@ -104,8 +104,8 @@ const Product=({children})=>{
 if(productLoading){
       return(
         <div className={classes.root}>
-            <LinearProgress color="primary" value={10} />
-            <LinearProgress color="primary" value={10} />
+            <LinearProgress color="secondary" value={10} />
+         
          </div>
       )
     }else{
@@ -129,7 +129,8 @@ if(productLoading){
            </Grid>
              <Grid item xs={12} sm={6}>   
              <p></p>
-                     <div style={{display:"flex",flexWrap:"wrap"}}>{filter.map((item)=>
+                     <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
+                       {filter.map((item)=>
                           <div key={item.id}>
                             <Card className={card.root}>
                                <CardActionArea>
@@ -144,7 +145,7 @@ if(productLoading){
                                 
                                 <Button size="small" color="primary" onClick={()=>addToCart(item) }> add to cart <ShoppingCartIcon ></ShoppingCartIcon>
                                
-                                <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                                <Snackbar open={open} autoHideDuration={600} onClose={handleClose}>
                                         <Alert onClose={handleClose} severity="success">
                                     added to cart
                                      </Alert>
