@@ -47,9 +47,8 @@ const ContextProvider=({children})=>{
          {
            sessionStorage.setItem("logged",true)
            sessionStorage.setItem("user",JSON.stringify(logindata))
-    
-           setLoginMessage("login in successfull !!!")
            setDisabled(false)
+           setLoginMessage("login in successfull !!!")
           }
          
        },(err)=>{
