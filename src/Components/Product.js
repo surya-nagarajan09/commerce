@@ -113,7 +113,7 @@ if(productLoading){
         <div>
       <div className={grid.root}>
           <Grid container spacing={8}>
-           <Grid item xs={2} > 
+           <Grid item xs={3} > 
            <Typography gutterBottom variant="h5" component="h6">Filter by search </Typography>
            <TextField id="standard-basic=" label="Search product and more" onChange={(e)=>setSearch(e.target.value)}/>
            <div style={{display:"block"}}>
@@ -127,7 +127,7 @@ if(productLoading){
            </div>
            
            </Grid>
-             <Grid item xs={12} sm={6}>   
+             <Grid item xs={9} sm={6}>   
              <p></p>
                      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
                        {filter.map((item)=>
