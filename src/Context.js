@@ -1,6 +1,8 @@
 import React,{createContext,useState,useEffect} from "react";
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 // creating product
 
@@ -48,15 +50,15 @@ const ContextProvider=({children})=>{
            sessionStorage.setItem("logged",true)
            sessionStorage.setItem("user",JSON.stringify(logindata))
            setDisabled(false)
-           setLoginMessage("login in successfull !!!")
+           setLoginMessage(<ThumbUpIcon/>)
           }
          
        },(err)=>{
-         setLoginMessage("login failure")
+         setLoginMessage(<ThumbDownIcon/>)
        })
 
       }else{
-        setLoginMessage("please fill all fileds")
+        setLoginMessage("can't be empty")
       }
        
 

@@ -15,6 +15,8 @@ import ShopRoundedIcon from '@material-ui/icons/ShopRounded';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import SearchIcon from '@material-ui/icons/Search';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 
 
@@ -57,9 +59,6 @@ const Product=({children})=>{
     const{post,setCart,cart,productLoading,addtoBuy,buy,changeasc,changedsc,reset}=useContext(ProductContext);
     const[search,setSearch]=useState("");
    
-    
-    /**  */
-
     window.localStorage.setItem('buyproduct', JSON.stringify(buy));
 
     // snack Bar
@@ -74,19 +73,11 @@ const Product=({children})=>{
     if (reason === 'clickaway') {
       return;
     }
-
     setOpen(false);
   }; 
-    
-
-    
    
   // add to cart
-    const addToCart=(item)=>{
-
-
-      
-      
+    const addToCart=(item)=>{  
       setCart([...cart,item])
     
     }
@@ -104,32 +95,26 @@ const Product=({children})=>{
 if(productLoading){
       return(
         <div className={classes.root}>
-            <LinearProgress color="secondary" value={10} />
-         
+            <LinearProgress color="secondary" value={10} />   
          </div>
       )
     }else{
       return(
         <div>
       <div className={grid.root}>
-          <Grid container spacing={8}>
-           <Grid item xs={2} > 
-           <Typography gutterBottom variant="h5" component="h6">Filter by search </Typography>
-           <TextField id="standard-basic=" label="Search product and more" onChange={(e)=>setSearch(e.target.value)}/>
-           <div style={{display:"block"}}>
-            <p></p>
-            <p></p>
-            <p></p>
-           <Typography gutterBottom variant="h5" component="h6">Filter by price</Typography>
+          <Grid container spacing={3}>
+           <Grid item xs={12} > 
+           <div style={{display: 'flex',flexWrap: 'wrap'}}>
+             
+           <TextField id="standard-basic=" label={<SearchIcon/>} onChange={(e)=>setSearch(e.target.value)}/>
+           <Typography gutterBottom variant="h5" component="h6"><FilterListIcon/></Typography>
            <Button size="large" color="secondary" onClick={()=>changeasc()}>lower to higher</Button>
            <Button size="large" color="secondary" onClick={()=>changedsc()}>higher to lower</Button>
            <Button size="large" color="secondary" onClick={()=>reset()}>Reset</Button>
            </div>
-           
            </Grid>
-             <Grid item xs={9} sm={6}>   
-             <p></p>
-                     <div style={{display:"flex",flexWrap:"wrap",justifyContent:"center"}}>
+             <Grid item xs={12} >
+                     <div style={{display:"flex",flexWrap:"wrap"}}>
                        {filter.map((item)=>
                           <div key={item.id}>
                             <Card className={card.root}>
