@@ -1,4 +1,4 @@
-import React ,{useContext}from 'react';
+import React ,{useContext,useEffect,useState}from 'react';
 import {ProductContext} from "../Context"
 
 //styles from materil ui
@@ -12,14 +12,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
-// const useStyles = makeStyles({
-//   root: {
-//     maxWidth: "full",
-//   },
-//   media: {
-//     height: 300,
-//   },
-// });
+
+
 const gridStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -41,43 +35,49 @@ const cardStyles = makeStyles({
 
 
 
+
+
   const Order=()=>{
     // const classes = useStyles();
     const grid=gridStyles();
     const card=cardStyles();
+    const[count,setCount]=useState(0)
+    console.log(count)
+   
     const {buy,adress} =useContext(ProductContext);
     console.log(buy);
-    console.log(adress);
+    console.log(adress)
 
-    
-        return (
+    useEffect(()=>{
+      const val=window.localStorage.getItem("count");
+      setCount(val);
+    },[])
+  return (
           <div className={grid.root}>
-          <Grid container spacing={3}>
-            <Grid item xs>
-           
-                           
-                         
+          <Grid container spacing={1}>
+            <Grid item xs={12} sm={3}>                        
              
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={12} sm={6}>
             
                             <Card className={card.root}>
                                <CardActionArea>{buy.map(item=>(
                                     <CardContent>
-                                    <Typography gutterBottom variant="h6" component="h6">{item.name} </Typography>
-                                    <Typography gutterBottom variant="h6" component="h6"> {item.price} </Typography>
+                                    <Typography gutterBottom variant="h4" component="h6">{item.name} </Typography>
+                                    <Typography gutterBottom variant="h4" component="h6"> {item.price} </Typography>
+                                    <Typography gutterBottom variant="h5">Number of items:{count}</Typography> <br/>
+                                    <Typography gutterBottom variant="h5">Number of items:{parseInt(item.priceinfo)*count}</Typography>  <br/>
+                                    <Typography gutterBottom variant="h5">Discount:{((parseInt(item.priceinfo)*count)*(0.05)).toFixed(0)}</Typography>
+                                    <Typography gutterBottom variant="h5">Total Price:{parseInt(item.priceinfo)*count-(((parseInt(item.priceinfo)*count)*(0.05)).toFixed(0))}</Typography><br/>
                                     <Typography gutterBottom variant="body2" component="textSecondary">  </Typography>
-
-                                    </CardContent>  
-
-                               ))}   
+                                    </CardContent>     ))}   
                                 </CardActionArea>
                              <CardActions>
-                                <Button size="small" color="primary">place order</Button>
+                               <CardContent>
+                               </CardContent>
+                                <Button size="small" color="primary" onClick={()=>alert("order Placed")}>place order  </Button>
                              </CardActions>
-                             </Card>
-                           
-              
+                             </Card>     
             </Grid>
             <Grid item xs>
              

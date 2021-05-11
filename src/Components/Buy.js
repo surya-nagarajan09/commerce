@@ -47,6 +47,9 @@ const cardStyles = makeStyles({
      setValue((item.priceinfo*count)*5/100)
      setused(true)
   }
+  const handleval=()=>{
+     window.localStorage.setItem("count",count);
+  }
     
        return (
           <div className={grid.root}>
@@ -73,7 +76,7 @@ const cardStyles = makeStyles({
                                     <Typography gutterBottom variant="h6" component="h6"> {item.name} </Typography>
                                     <Typography gutterBottom variant="h6" component="h6"> {item.price} </Typography>
                                     <Typography gutterBottom variant="body2" component="textSecondary">{item.info}</Typography>
-                                   <Link href="/adress"> <Button size="large" color="primary" >Payment and Adress< ChevronRightIcon></ChevronRightIcon></Button></Link>
+                                   <Link href="/adress"> <Button size="large" color="primary" onClick={handleval}>Payment and Address< ChevronRightIcon></ChevronRightIcon></Button></Link>
                                     <hr/>
                                     <Typography gutterBottom variant="h6" component="h6">Review</Typography>
                                     
@@ -90,8 +93,7 @@ const cardStyles = makeStyles({
                              </Card>
                             </div> 
                          )}
-                      </div>
-              
+                      </div>         
             </Grid>
             <Grid item xs>
             <div>{buy.map((item)=>
@@ -109,7 +111,7 @@ const cardStyles = makeStyles({
                                    <Typography gutterBottom variant="h4" component="h4">Offer: {(value).toFixed(0)} </Typography>   
                                    <Typography gutterBottom variant="h4" component="h4"> Total Price: {((item.priceinfo*count)-value).toFixed(0)} </Typography>
                                    <hr/>
-                                   <Typography gutterBottom variant="h6" component="h6">Apply coupoun  </Typography>
+                                   <Typography gutterBottom variant="h6" component="h6">Apply coupoun </Typography>
                                    <Typography gutterBottom variant="h6" component="h6">Offer 5% </Typography>
                                    <Button size="medium" color="secondary" disabled={used===true} onClick={()=>handleoffer(item)}>Apply coupoun</Button> 
                                   </CardContent>  
